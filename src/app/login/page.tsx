@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuthStore } from "@/store/useAuthStore"; // 🔥 Vérifie que l'import est correct
+import { motion } from "framer-motion"; // ✅ Animation
 
 export default function Login() {
   const router = useRouter();
@@ -59,44 +60,75 @@ export default function Login() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 text-center">
-      <h1 className="text-3xl font-bold text-blue-600">Connexion</h1>
-      <p className="text-gray-600 mt-2">Connectez-vous pour accéder à FruitStock 🍏</p>
-
-      <form onSubmit={handleSubmit} className="bg-white p-6 mt-4 rounded-lg shadow-md w-80">
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          className="w-full p-2 mb-2 border rounded text-black"
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Mot de passe"
-          className="w-full p-2 mb-2 border rounded text-black"
-          onChange={handleChange}
-          required
-        />
-        <button
-          type="submit"
-          className="w-full bg-blue-500 text-white p-2 rounded-lg shadow hover:bg-blue-600"
-          disabled={loading}
+    <div className="flex flex-col justify-between min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 text-white">
+      {/* ✅ Contenu principal */}
+      <div className="flex flex-col items-center justify-center flex-grow text-center p-6">
+        {/* ✅ Animation d'entrée */}
+        <motion.h1
+          className="text-4xl font-extrabold text-white drop-shadow-lg"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
         >
-          {loading ? "Connexion..." : "Se connecter"}
-        </button>
-      </form>
+          Connexion 🔐
+        </motion.h1>
+        <p className="text-gray-300 mt-2 text-lg">Connectez-vous pour accéder à FruitStock 🍏</p>
 
-      {error && <p className="text-red-500 mt-2">{error}</p>}
+        {/* 🔥 Carte du formulaire */}
+        <motion.div
+          className="mt-6 bg-gray-800 shadow-xl rounded-2xl p-8 w-full max-w-md border border-gray-700"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              className="w-full p-3 border rounded-lg bg-gray-900 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="password"
+              name="password"
+              placeholder="Mot de passe"
+              className="w-full p-3 border rounded-lg bg-gray-900 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              onChange={handleChange}
+              required
+            />
 
-      <p className="mt-4">
-        Pas encore de compte ?{" "}
-        <a href="/signup" className="text-blue-500 hover:underline">
-          Inscrivez-vous
-        </a>
-      </p>
+            <button
+              type="submit"
+              className="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out transform hover:scale-105"
+              disabled={loading}
+            >
+              {loading ? "Connexion..." : "Se connecter"}
+            </button>
+          </form>
+
+          {error && <p className="text-red-500 mt-4 text-center">{error}</p>}
+        </motion.div>
+
+        {/* 🔄 Redirection vers l'inscription */}
+        <p className="mt-6">
+          Pas encore de compte ?{" "}
+          <a href="/signup" className="text-blue-400 font-semibold underline hover:text-blue-200">
+            Inscrivez-vous
+          </a>
+        </p>
+      </div>
+
+      {/* ✅ Footer */}
+      <footer className="py-6 bg-gray-800 text-center text-gray-400 text-sm">
+        <p>&copy; 2025 FruitStock. Tous droits réservés.</p>
+        <div className="flex justify-center space-x-4 mt-2">
+          <a href="#" className="hover:text-blue-400 transition">Conditions d'utilisation</a>
+          <a href="#" className="hover:text-blue-400 transition">Politique de confidentialité</a>
+          <a href="#" className="hover:text-blue-400 transition">Assistance</a>
+        </div>
+      </footer>
     </div>
   );
 }
