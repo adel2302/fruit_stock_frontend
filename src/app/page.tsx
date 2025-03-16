@@ -10,10 +10,10 @@ export default function Home() {
 
   // 🔹 Définition des phases
   const phases = [
-    { id: 1, title: "Phase 1", price: "0.1 USDT", status: "Terminée" },
-    { id: 2, title: "Phase 2", price: "0.3 USDT", status: "En cours" },
-    { id: 3, title: "Phase 3", price: "0.4 USDT", status: "À venir" },
-    { id: 4, title: "Grand Opening", price: "0.5 USDT", status: "Ouverture" },
+    { id: 1, title: "Phase 1", price: "0.1 USDT par Fruit", status: "Terminée" },
+    { id: 2, title: "Phase 2", price: "0.2 USDT par Fruit", status: "En cours" },
+    { id: 3, title: "Phase 3", price: "0.4 USDT par Fruit", status: "À venir" },
+    { id: 4, title: "Grand Opening", price: "0.5 USDT par Fruit", status: "Ouverture" },
   ];
 
   return (
@@ -96,7 +96,7 @@ export default function Home() {
 
       {/* ✅ Section Explication des Prix */}
       <section className="max-w-4xl mx-auto px-6 py-16 text-center">
-        <h2 className="text-3xl font-semibold text-blue-400">💰 Évolution du Prix des Fruits</h2>
+        <h2 className="text-3xl font-semibold text-blue-400">💰 Évolution du Prix des Fruits durant le Pre-Sales</h2>
         <p className="mt-4 text-gray-300 leading-relaxed">
           FruitStock fonctionne sur un <strong>modèle progressif de valorisation</strong>.  
           <strong>Plus tôt vous investissez, plus le prix est avantageux.</strong>
@@ -104,10 +104,10 @@ export default function Home() {
 
         <div className="mt-6 bg-gray-800 p-6 rounded-lg shadow-md">
           <ul className="text-gray-300 space-y-4">
-            <li>📌 <strong>Phase 1</strong> (1000 premiers inscrits) → <strong>0.1 USDT</strong> ✅ Meilleur prix</li>
-            <li>📌 <strong>Phase 2</strong> (1000 suivants) → <strong>0.3 USDT</strong> 🚀 Prix encore attractif</li>
-            <li>📌 <strong>Phase 3</strong> (1000 derniers) → <strong>0.4 USDT</strong> 🔥 Dernière opportunité</li>
-            <li>🎉 <strong>Grand Opening</strong> → <strong>0.5 USDT</strong> 🏆 Prix de départ du marché officiel</li>
+            <li>📌 <strong>Phase 1</strong> (1000 premiers inscrits) → <strong>0.1 USDT par Fruit</strong> ✅ Meilleur prix</li>
+            <li>📌 <strong>Phase 2</strong> (1000 suivants) → <strong>0.2 USDT par Fruit</strong> 🚀 Prix encore attractif</li>
+            <li>📌 <strong>Phase 3</strong> (1000 derniers) → <strong>0.4 USDT par Fruit</strong> 🔥 Dernière opportunité</li>
+            <li>🎉 <strong>Grand Opening</strong> → <strong>0.5 USDT par Fruit</strong> 🏆 Prix de départ du marché officiel</li>
           </ul>
           <p className="mt-4 text-green-400 font-semibold">
             📈 <strong>Investissez tôt pour maximiser vos gains !</strong> 🚀

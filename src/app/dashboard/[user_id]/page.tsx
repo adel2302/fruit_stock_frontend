@@ -19,7 +19,7 @@ export default function Dashboard() {
 
   if (!user) return <p className="text-center text-white text-lg">Chargement...</p>;
 
-  // 🔄 Fonction pour rafraîchir les données utilisateur sans recharger la page
+  // 🔄 Fonction pour rafraîchir les données utilisateur avec redirection en cas de 401
   const refreshUserData = async () => {
     const token = localStorage.getItem("token");
 
@@ -32,6 +32,13 @@ export default function Dashboard() {
       const res = await fetch(`http://localhost:4000/users/${user_id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
+
+      if (res.status === 401) {
+        // 🔥 Redirige vers login si le token est expiré ou invalide
+        logout();
+        router.push("/login");
+        return;
+      }
 
       if (!res.ok) {
         throw new Error("Erreur lors de la récupération des données");
